@@ -38,3 +38,12 @@ F:\TokoBangunan\TokoBangunan\obj\Debug\net5.0\ref\TokoBangunan.dll
 F:\TokoBangunan\TokoBangunan\obj\Debug\net5.0\TokoBangunan.pdb
 F:\TokoBangunan\TokoBangunan\obj\Debug\net5.0\TokoBangunan.genruntimeconfig.cache
 F:\TokoBangunan\TokoBangunan\obj\Debug\net5.0\TokoBangunan.csproj.CopyComplete
+F:\TokoBangunan\TokoBangunan\bin\Debug\net5.0\Humanizer.dll
+F:\TokoBangunan\TokoBangunan\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.dll
+F:\TokoBangunan\TokoBangunan\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+F:\TokoBangunan\TokoBangunan\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Design.dll
+F:\TokoBangunan\TokoBangunan\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Relational.dll
+F:\TokoBangunan\TokoBangunan\bin\Debug\net5.0\Microsoft.Extensions.DependencyInjection.dll
+F:\TokoBangunan\TokoBangunan\bin\Debug\net5.0\MySqlConnector.dll
+F:\TokoBangunan\TokoBangunan\bin\Debug\net5.0\Pomelo.EntityFrameworkCore.MySql.dll
+F:\TokoBangunan\TokoBangunan\bin\Debug\net5.0\System.Diagnostics.DiagnosticSource.dll
