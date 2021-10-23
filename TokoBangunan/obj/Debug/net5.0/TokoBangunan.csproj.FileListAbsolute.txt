@@ -47,3 +47,4 @@ F:\TokoBangunan\TokoBangunan\bin\Debug\net5.0\Microsoft.Extensions.DependencyInj
 F:\TokoBangunan\TokoBangunan\bin\Debug\net5.0\MySqlConnector.dll
 F:\TokoBangunan\TokoBangunan\bin\Debug\net5.0\Pomelo.EntityFrameworkCore.MySql.dll
 F:\TokoBangunan\TokoBangunan\bin\Debug\net5.0\System.Diagnostics.DiagnosticSource.dll
+F:\TokoBangunan\TokoBangunan\obj\Debug\net5.0\Razor\Views\TokoBangunan\Index.cshtml.g.cs
