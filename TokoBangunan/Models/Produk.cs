@@ -1,5 +1,6 @@
 using System;
 using System.ComponentModel.DataAnnotations;
+using System.Collections.Generic;
 
 namespace TokoBangunan.Models
 {
@@ -10,5 +11,6 @@ namespace TokoBangunan.Models
         public decimal Harga { get; set; }
         public string Kategori { get; set; }
         public string Nama { get; set; }
+        public virtual List<Produk> Produks { get; set;}
     }
 }
