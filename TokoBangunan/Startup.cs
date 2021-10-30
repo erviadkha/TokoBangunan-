@@ -11,6 +11,8 @@ using Microsoft.Extensions.Hosting;
 using TokoBangunan.Data;
 using Microsoft.EntityFrameworkCore;
 using Pomelo.EntityFrameworkCore.MySql;
+using Microsoft.AspNetCore.Identity;
+using TokoBangunan.Models;
 
 namespace TokoBangunan
 {
@@ -27,12 +29,17 @@ namespace TokoBangunan
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-            services.AddDbContext<TokoBangunanDbContext>(option =>
+            services.AddDbContext<TokoBangunanDbContext>(option => 
             {
                 var connectionString = Configuration.GetConnectionString("TokoBangunan");
                 var serverVersion = new MariaDbServerVersion(new Version(10, 6, 4));
                 option.UseMySql(connectionString, serverVersion);
             });
+            services
+                .AddDefaultIdentity<Pengguna>()
+                .AddEntityFrameworkStores<TokoBangunanDbContext>()
+                .AddDefaultTokenProviders();
+            services.AddRazorPages();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -53,6 +60,8 @@ namespace TokoBangunan
 
             app.UseRouting();
 
+            app.UseAuthentication();
+
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
@@ -60,6 +69,7 @@ namespace TokoBangunan
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
+                endpoints.MapRazorPages();
             });
         }
     }

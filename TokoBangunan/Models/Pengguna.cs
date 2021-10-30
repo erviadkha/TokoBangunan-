@@ -1,12 +1,11 @@
 using System;
 using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Identity;
 
 namespace TokoBangunan.Models
 {
-    public class Pengguna
+    public class Pengguna : IdentityUser
     {
-        public int Id { get; set; }
-        public string Username { get; set;}
-        public string Password { get; set;}
+        
     }
 }
