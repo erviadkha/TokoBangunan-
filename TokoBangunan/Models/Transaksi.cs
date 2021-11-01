@@ -1,5 +1,6 @@
 using System;
 using System.ComponentModel.DataAnnotations;
+using System.Collections.Generic;
 
 namespace TokoBangunan.Models
 {
@@ -8,5 +9,6 @@ namespace TokoBangunan.Models
         public int Id {get; set;}
         public string Pengguna {get; set;}
         public DateTime TanggalTransaksi { get; set;}
+        public virtual List<Transaksi> Transaksis { get; set;}
     }
 }
