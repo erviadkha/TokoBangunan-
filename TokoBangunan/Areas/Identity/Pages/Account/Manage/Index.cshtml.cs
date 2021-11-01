@@ -93,7 +93,7 @@ namespace TokoBangunan.Areas.Identity.Pages.Account.Manage
             }
 
             var avatarDirectory = Path.Combine(Directory.GetCurrentDirectory(), "Avatar");
-            Directory.CreteDirectory(avatarDirectory);
+            Directory.CreateDirectory(avatarDirectory);
 
             var extension = Path.GetExtension(Input.AvatarFile?.FileName)?. ToLowerInvariant();
             var permittedType = new string []{ ".png", ".jpg", ".jpeg"};
@@ -109,6 +109,7 @@ namespace TokoBangunan.Areas.Identity.Pages.Account.Manage
              await Input.AvatarFile.CopyToAsync(stream);
              user.Avatar = fileName;
              await _userManager.UpdateAsync(user);
+             
              await _signInManager.RefreshSignInAsync(user);
              StatusMessage = "Your profile has been updated";
              return RedirectToPage();

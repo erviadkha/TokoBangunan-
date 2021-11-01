@@ -6,6 +6,6 @@ namespace TokoBangunan.Models
 {
     public class Pengguna : IdentityUser
     {
-        
+        public string Avatar{ get; set; }
     }
 }
