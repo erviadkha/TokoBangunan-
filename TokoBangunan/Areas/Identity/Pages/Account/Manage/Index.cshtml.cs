@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using TokoBangunan.Models;
+using Microsoft.AspNetCore.Http;
+using System.IO;
 
 namespace TokoBangunan.Areas.Identity.Pages.Account.Manage
 {
