@@ -8,6 +8,5 @@ namespace TokoBangunan.Models
     {
         public int Id { get; set;}
         public string Nama { get; set;}
-        public virtual List<Kategori> Kategoris { get; set; }
     }
 }
