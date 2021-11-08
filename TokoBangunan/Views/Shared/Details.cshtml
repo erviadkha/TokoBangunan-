@@ -1,0 +1,26 @@
+@model Produk
+@{
+    ViewData["Title"] = "";
+}
+
+<table class="table table-hover">
+    <tr>
+        <td>Stok</td>
+        <td>@Html.DisplayFor(modelItem => modelItem.Stok)</td>
+    </tr>
+    <tr>
+        <td>Harga</td>
+        <td>@Html.DisplayFor(modelItem => modelItem.Harga)</td>
+    </tr>
+    <tr>
+        <td>KategoriId</td>
+        <td>@Html.DisplayFor(modelItem => modelItem.KategoriId)</td>
+    </tr>
+    <tr>
+        <td>Nama</td>
+        <td>@Html.DisplayFor(modelItem => modelItem.Nama)</td>
+    </tr>
+</table>
+<div class="form-group">
+    <input type="Submit" value="Beli" class="btn btn-primary" />
+</div>
