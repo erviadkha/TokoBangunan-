@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace TokoBangunan.Migrations
 {
-    public partial class Inisials : Migration
+    public partial class Initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -79,60 +79,6 @@ namespace TokoBangunan.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Kategoris", x => x.Id);
-                })
-                .Annotation("MySql:CharSet", "utf8mb4");
-
-            migrationBuilder.CreateTable(
-                name: "Produks",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    Stok = table.Column<decimal>(type: "decimal(65,30)", nullable: false),
-                    Harga = table.Column<decimal>(type: "decimal(65,30)", nullable: false),
-                    Kategori = table.Column<string>(type: "longtext", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    Nama = table.Column<string>(type: "longtext", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4")
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Produks", x => x.Id);
-                })
-                .Annotation("MySql:CharSet", "utf8mb4");
-
-            migrationBuilder.CreateTable(
-                name: "TransaksiProduks",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    Produk = table.Column<string>(type: "longtext", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    Transaksi = table.Column<string>(type: "longtext", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    Jumlah = table.Column<decimal>(type: "decimal(65,30)", nullable: false),
-                    Harga = table.Column<decimal>(type: "decimal(65,30)", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_TransaksiProduks", x => x.Id);
-                })
-                .Annotation("MySql:CharSet", "utf8mb4");
-
-            migrationBuilder.CreateTable(
-                name: "Transaksis",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    Pengguna = table.Column<string>(type: "longtext", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    TanggalTransaksi = table.Column<DateTime>(type: "datetime(6)", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Transaksis", x => x.Id);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
@@ -263,6 +209,81 @@ namespace TokoBangunan.Migrations
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
+            migrationBuilder.CreateTable(
+                name: "Transaksis",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    PenggunaId = table.Column<string>(type: "varchar(255)", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    TanggalTransaksi = table.Column<DateTime>(type: "datetime(6)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Transaksis", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Transaksis_AspNetUsers_PenggunaId",
+                        column: x => x.PenggunaId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
+
+            migrationBuilder.CreateTable(
+                name: "Produks",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    Stok = table.Column<decimal>(type: "decimal(65,30)", nullable: false),
+                    Harga = table.Column<decimal>(type: "decimal(65,30)", nullable: false),
+                    KategoriId = table.Column<int>(type: "int", nullable: false),
+                    Nama = table.Column<string>(type: "longtext", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4")
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Produks", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Produks_Kategoris_KategoriId",
+                        column: x => x.KategoriId,
+                        principalTable: "Kategoris",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
+
+            migrationBuilder.CreateTable(
+                name: "TransaksiProduks",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    ProdukId = table.Column<int>(type: "int", nullable: false),
+                    TransaksiId = table.Column<int>(type: "int", nullable: false),
+                    Jumlah = table.Column<decimal>(type: "decimal(65,30)", nullable: false),
+                    Harga = table.Column<decimal>(type: "decimal(65,30)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_TransaksiProduks", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_TransaksiProduks_Produks_ProdukId",
+                        column: x => x.ProdukId,
+                        principalTable: "Produks",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_TransaksiProduks_Transaksis_TransaksiId",
+                        column: x => x.TransaksiId,
+                        principalTable: "Transaksis",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
+
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
                 table: "AspNetRoleClaims",
@@ -299,6 +320,26 @@ namespace TokoBangunan.Migrations
                 table: "AspNetUsers",
                 column: "NormalizedUserName",
                 unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Produks_KategoriId",
+                table: "Produks",
+                column: "KategoriId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_TransaksiProduks_ProdukId",
+                table: "TransaksiProduks",
+                column: "ProdukId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_TransaksiProduks_TransaksiId",
+                table: "TransaksiProduks",
+                column: "TransaksiId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Transaksis_PenggunaId",
+                table: "Transaksis",
+                column: "PenggunaId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -319,19 +360,19 @@ namespace TokoBangunan.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "Kategoris");
+                name: "TransaksiProduks");
+
+            migrationBuilder.DropTable(
+                name: "AspNetRoles");
 
             migrationBuilder.DropTable(
                 name: "Produks");
 
             migrationBuilder.DropTable(
-                name: "TransaksiProduks");
-
-            migrationBuilder.DropTable(
                 name: "Transaksis");
 
             migrationBuilder.DropTable(
-                name: "AspNetRoles");
+                name: "Kategoris");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");

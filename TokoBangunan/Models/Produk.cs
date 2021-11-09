@@ -9,8 +9,8 @@ namespace TokoBangunan.Models
         public int Id { get; set; }
         public decimal Stok { get; set;}
         public decimal Harga { get; set; }
-        public string Kategori { get; set; }
+        public int KategoriId { get; set; }
+        public virtual Kategori Kategoris { get; set; }
         public string Nama { get; set; }
-        public virtual List<Produk> Produks { get; set;}
     }
 }

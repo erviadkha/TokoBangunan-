@@ -239,8 +239,8 @@ namespace TokoBangunan.Migrations
                     b.Property<decimal>("Harga")
                         .HasColumnType("decimal(65,30)");
 
-                    b.Property<string>("Kategori")
-                        .HasColumnType("longtext");
+                    b.Property<int>("KategoriId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Nama")
                         .HasColumnType("longtext");
@@ -249,6 +249,8 @@ namespace TokoBangunan.Migrations
                         .HasColumnType("decimal(65,30)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("KategoriId");
 
                     b.ToTable("Produks");
                 });
@@ -259,13 +261,15 @@ namespace TokoBangunan.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<string>("Pengguna")
-                        .HasColumnType("longtext");
+                    b.Property<string>("PenggunaId")
+                        .HasColumnType("varchar(255)");
 
                     b.Property<DateTime>("TanggalTransaksi")
                         .HasColumnType("datetime(6)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("PenggunaId");
 
                     b.ToTable("Transaksis");
                 });
@@ -282,13 +286,17 @@ namespace TokoBangunan.Migrations
                     b.Property<decimal>("Jumlah")
                         .HasColumnType("decimal(65,30)");
 
-                    b.Property<string>("Produk")
-                        .HasColumnType("longtext");
+                    b.Property<int>("ProdukId")
+                        .HasColumnType("int");
 
-                    b.Property<string>("Transaksi")
-                        .HasColumnType("longtext");
+                    b.Property<int>("TransaksiId")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("ProdukId");
+
+                    b.HasIndex("TransaksiId");
 
                     b.ToTable("TransaksiProduks");
                 });
@@ -342,6 +350,45 @@ namespace TokoBangunan.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("TokoBangunan.Models.Produk", b =>
+                {
+                    b.HasOne("TokoBangunan.Models.Kategori", "Kategoris")
+                        .WithMany()
+                        .HasForeignKey("KategoriId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Kategoris");
+                });
+
+            modelBuilder.Entity("TokoBangunan.Models.Transaksi", b =>
+                {
+                    b.HasOne("TokoBangunan.Models.Pengguna", "Pengguna")
+                        .WithMany()
+                        .HasForeignKey("PenggunaId");
+
+                    b.Navigation("Pengguna");
+                });
+
+            modelBuilder.Entity("TokoBangunan.Models.TransaksiProduk", b =>
+                {
+                    b.HasOne("TokoBangunan.Models.Produk", "Produk")
+                        .WithMany()
+                        .HasForeignKey("ProdukId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("TokoBangunan.Models.Transaksi", "Transaksi")
+                        .WithMany()
+                        .HasForeignKey("TransaksiId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Produk");
+
+                    b.Navigation("Transaksi");
                 });
 #pragma warning restore 612, 618
         }
