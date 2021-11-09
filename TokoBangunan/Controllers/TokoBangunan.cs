@@ -12,7 +12,6 @@ namespace TokoBangunan.Controllers
 {
     public class TokoBangunan : Controller
     {
-
         public IActionResult Index()
         {
             return View();
