@@ -11,13 +11,22 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
+<<<<<<< HEAD
+   <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.11" />
+=======
     <PackageReference Include="Microsoft.EntityFrameworkCore.Proxies" Version="5.0.11" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.11" />
+>>>>>>> 6b944262cf62e9791f4e19d0fe46a6ca62d6dadc
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.11">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="5.0.2" />
+<<<<<<< HEAD
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Proxies" Version="5.0.11" />
+
+=======
+>>>>>>> 6b944262cf62e9791f4e19d0fe46a6ca62d6dadc
     <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="5.0.2" />
   </ItemGroup>
 
