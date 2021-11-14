@@ -1,0 +1,21 @@
+@model TokoBangunan.Models.TransaksiProduk
+@{
+    ViewData["Title"] = "Index";
+}
+<h2>@Html.DisplayNameFor(x => x.Transaksi)</h2>
+<table class="table">
+    <tbody>
+        <tr>
+            <td> Produk:</td>
+            <td>@Html.DisplayFor(x => x.ProdukId)</td>
+        </tr>
+        <tr>
+            <td> Jumlah:</td>
+            <td>@Html.DisplayFor(x => x.Jumlah)</td>
+        </tr>
+        <tr>
+            <td> Harga:</td>
+            <td>@Html.DisplayFor(x => x.Harga)</td>
+        </tr>
+    </thead>
+</table>

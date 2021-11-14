@@ -10,5 +10,6 @@ namespace TokoBangunan.Models
         public string PenggunaId { get; set; }
         public virtual Pengguna Pengguna { get; set; }
         public DateTime TanggalTransaksi { get; set; }
+        public virtual List<TransaksiProduk> TransaksiProduks { get; set; }
     }
 }

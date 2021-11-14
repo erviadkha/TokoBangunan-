@@ -8,6 +8,7 @@ using Microsoft.Extensions.Logging;
 using TokoBangunan.Models; 
 using System.Text.Encodings.Web;
 using TokoBangunan.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace TokoBangunan.Controllers
 {
@@ -30,7 +31,32 @@ namespace TokoBangunan.Controllers
             var Produk = _context.Produks.Find(id);
             return View(Produk);
         }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Create([Bind("Id,Stok,Harga,KategoriId,Nama,Link")] Produk produk)
+        {
+            if(ModelState.IsValid)
+            {
+                try
+                {
+                    _context.Produks.Add(produk);
+                    _context.SaveChanges();
+                }
+                catch(DbUpdateException)
+                {
+                    throw;
+                }
+                return RedirectToAction("Index");
+            }
+            return View();
+        }
+
         
+         public IActionResult Create()
+         {
+             return View();
+         }
 
         public IActionResult Privacy()
         {

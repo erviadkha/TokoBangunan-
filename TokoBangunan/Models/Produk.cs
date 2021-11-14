@@ -12,5 +12,6 @@ namespace TokoBangunan.Models
         public int KategoriId { get; set; }
         public virtual Kategori Kategoris { get; set; }
         public string Nama { get; set; }
+        public string Link { get; set; }
     }
 }

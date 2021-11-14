@@ -14,7 +14,7 @@
     </tr>
     <tr>
         <td>KategoriId</td>
-        <td>@Html.DisplayFor(modelItem => modelItem.KategoriId)</td>
+        <td>@Html.DisplayFor(modelItem => modelItem.Kategoris.Nama)</td>
     </tr>
     <tr>
         <td>Nama</td>
@@ -22,5 +22,7 @@
     </tr>
 </table>
 <div class="form-group">
-    <input type="Submit" value="Beli" class="btn btn-primary" />
+    <form asp-controller="Transaksi" asp-action="Create" asp-route-Id="@Model.Id" method="get">
+        <input type="Submit" value="Beli" class="btn btn-primary" />
+    </form>
 </div>
